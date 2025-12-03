@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mở liên kết</title>
+
 <style>
     body {
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -12,49 +13,60 @@
         padding-top: 60px;
         background: #fff;
     }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+
+    h2 { font-size: 28px; font-weight: 700; }
     p { font-size: 18px; opacity: 0.7; }
 
     .box {
-        margin: 40px auto;
+        margin: 30px auto;
         width: 92%;
         background: #f2f2f2;
         border-radius: 18px;
-        padding: 45px 22px;
-        user-select: none;
+        padding: 40px 20px;
     }
 
     input {
         width: 100%;
         font-size: 22px;
-        background: transparent;
         border: none;
+        background: transparent;
         outline: none;
+        text-align: center;
         user-select: none;
     }
+
+    button {
+        margin-top: 30px;
+        padding: 16px 22px;
+        font-size: 20px;
+        background: #ff5722;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+    }
+
+    *:focus { outline: none !important; box-shadow: none !important; }
 </style>
 </head>
+
 <body>
 
-<h1>Mở liên kết</h1>
-<p>Chạm 1 lần để chọn URL trên iOS</p>
+<h2>Mở liên kết</h2>
+<p>Bấm nút để tự động tô đen URL</p>
 
-<div class="box" id="tapBox">
+<div class="box">
     <input id="url" value="https://beacons.ai/tuimufeedback" readonly>
 </div>
 
+<button onclick="selectURL()">Chọn URL</button>
+
 <script>
-const box = document.getElementById("tapBox");
-const input = document.getElementById("url");
-
-function autoSelect() {
-    setTimeout(() => {
-        input.setSelectionRange(0, input.value.length);
-    }, 0);
+function selectURL() {
+    const input = document.getElementById("url");
+    input.focus();
+    input.setSelectionRange(0, input.value.length);
 }
-
-box.addEventListener("touchstart", autoSelect, { passive: true });
-box.addEventListener("mousedown", autoSelect);
 </script>
 
 </body>
